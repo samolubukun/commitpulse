@@ -20,8 +20,7 @@ class GitAnalyzer:
                 cwd=self.repo_path,
                 capture_output=True,
                 text=True,
-                check=True,
-                shell=True
+                check=True
             )
             return result.stdout.strip()
         except (subprocess.CalledProcessError, FileNotFoundError):

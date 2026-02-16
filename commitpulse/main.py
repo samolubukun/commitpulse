@@ -47,7 +47,7 @@ def main():
     # Cloud-first strategy: if no --local is specified, we intend to publish.
     # However, if explicitly requested --local, we must confirm.
     if args.local:
-        confirm = input("\n💡 This will generate a static HTML dashboard locally. Do you wish to proceed? (y/n): ").lower()
+        confirm = input("\n[*] This will generate a static HTML dashboard locally. Do you wish to proceed? (y/n): ").lower()
         if confirm != 'y':
             print("Operation cancelled.")
             sys.exit(0)
@@ -68,7 +68,7 @@ def main():
         analyzer = GitAnalyzer(args.path)
         if not analyzer.is_git_repo():
             print(f"Error: {os.path.abspath(args.path)} is not a git repository.")
-            print("💡 Tip: Use '--scan' to find and analyze all git repositories in this folder.")
+            print("Tip: Use '--scan' to find and analyze all git repositories in this folder.")
             sys.exit(1)
             
         stats = analyzer.get_stats()
@@ -100,7 +100,7 @@ def main():
         # Get username from git config
         username = GitAnalyzer.get_git_config_user() or os.getenv("USER") or "Anonymous"
         
-        print(f"\n🚀 Synchronizing Pulse to Global Registry as '{username}'...")
+        print(f"\n[*] Synchronizing Pulse to Global Registry as '{username}'...")
         
         # Production Cloud URL
         cloud_url = os.getenv("COMMITPULSE_CLOUD_URL", "https://commitpulse.pxxl.click") 
@@ -121,17 +121,17 @@ def main():
             if response.status_code == 200:
                 result = response.json()
                 published_url = result['url']
-                print(f"✨ Successfully published! Share your Pulse at: {published_url}")
+                print(f"[+] Successfully published! Share your Pulse at: {published_url}")
                 
                 # Automatically open cloud link if not suppressed
                 if not args.no_open:
-                    print(f"🌍 Opening your cloud dashboard...")
+                    print(f"[!] Opening your cloud dashboard...")
                     webbrowser.open(published_url)
             else:
-                print(f"❌ Failed to publish: {response.text}")
+                print(f"[-] Failed to publish: {response.text}")
         except Exception as e:
-            print(f"⚠️ Cloud sync failed: {str(e)}")
-            print("💡 Trying to generate a local fallback...")
+            print("[-] Cloud sync failed: " + str(e))
+            print("[*] Trying to generate a local fallback...")
             renderer = DashboardRenderer(all_stats)
             output_path = renderer.render()
             print(f"Fallback dashboard: {output_path}")
