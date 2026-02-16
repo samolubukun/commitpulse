@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "commitpulse"
-version = "0.1.4"
+version = "0.1.5"
 description = "Premium Git repository analytics and dashboard generator"
 authors = [
     { name = "Samuel Olubukun" }

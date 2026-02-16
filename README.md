@@ -6,7 +6,7 @@
 **High-fidelity Git analytics for the modern developer.**
 Analyze your repositories, track contributor impact, and visualize your engineering legacy in seconds.
 
-[**Explore the Registry**](https://commitpulse.pxxl.click/explore) | [**PyPI Package**](https://pypi.org/project/commitpulse/)
+[**Explore the Registry**](https://commitpulse.pxxl.click/explore) | [**GitHub Repository**](https://github.com/samolubukun/commitpulse) | [**PyPI Package**](https://pypi.org/project/commitpulse/)
 
 ---
 
@@ -23,12 +23,6 @@ Host your dashboard globally and get a unique, shareable URL.
 commitpulse
 ```
 *Output: `✨ Successfully published! Share your Pulse at: https://commitpulse.pxxl.click/v/unique-id`*
-
-### 3. Master Scan
-Aggregate all repositories in your computer and sync them at once.
-```bash
-commitpulse --scan
-```
 
 ---
 
